@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Reconciliation Only Bank Statement & Cash Register",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.1.0",
     "category": "Accounting",
     "website": "https://opensynergy-indonesia.com",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",

@@ -36,15 +36,25 @@ class AccountBankStatement(models.Model):
     )
 
     @api.multi
-    def action_repopulate_transanction(self):
+    def action_populate_transanction(self):
         for document in self:
-            self._repopulate_transanction()
+            document._populate_transanction()
 
     @api.multi
-    def _repopulate_transanction(self):
+    def action_remove_transaction(self):
+        for document in self:
+            document._remove_transaction()
+
+    @api.multi
+    def _remove_transaction(self):
         self.ensure_one()
         self.line_ids.write({"journal_entry_id": False})
         self.line_ids.unlink()
+
+    @api.multi
+    def _populate_transanction(self):
+        self.ensure_one()
+        self._remove_transaction()
         self.write({"line_ids": self._get_statement_lines_dict()})
 
     @api.multi

@@ -16,7 +16,7 @@ class AccountMoveLine(models.Model):
         if self.debit > 0.0:
             return self.debit
         else:
-            return self.credit
+            return -1.0 * self.credit
 
     @api.multi
     def prepare_bank_statement_line(self):
