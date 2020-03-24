@@ -44,7 +44,8 @@
             </xpath>
 
             <xpath expr="//header/span/button[@name='button_confirm_bank']" position="before">
-                <button name="action_repopulate_transanction" string="Repopulate Transaction" type="object" states="draft,open"/>
+                <button name="action_populate_transanction" string="Populate Transaction" type="object" states="draft,open"/>
+                <button name="action_remove_transaction" string="Clear Transaction" type="object" states="draft,open"/>
             </xpath>
         </data>
     </field>
@@ -81,7 +82,8 @@
             </xpath>
 
             <xpath expr="//header/span/button[@name='button_confirm_cash']" position="before">
-                <button name="action_repopulate_transanction" string="Repopulate Transaction" type="object" states="open"/>
+                <button name="action_populate_transanction" string="Populate Transaction" type="object" states="open"/>
+                <button name="action_remove_transaction" string="Clear Transaction" type="object" states="open"/>
             </xpath>
         </data>
     </field>
