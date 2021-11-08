@@ -12,7 +12,7 @@
     "installable": True,
     "depends": [
         "account",
-        "ssi_multiple_approval_mixin",
+        "ssi_policy_mixin",
     ],
     "data": [
         "views/account_bank_statement_view.xml",
