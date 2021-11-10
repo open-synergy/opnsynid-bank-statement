@@ -16,8 +16,10 @@ class AccountBankStatement(models.Model):
     _approval_state = "approval"
 
     state = fields.Selection(
-        selection_add=[
+        selection=[
+            ("open", "New"),
             ("approval", "Waiting For Approval"),
+            ("confirm", "Validated"),
             ("cancel", "Cancelled"),
             ("reject", "Rejected"),
         ]

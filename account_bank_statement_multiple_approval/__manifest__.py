@@ -9,8 +9,6 @@
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "depends": [
-        "account",
-        # "account_accountant",
         "account_cancel",
         "ssi_multiple_approval_mixin",
     ],
