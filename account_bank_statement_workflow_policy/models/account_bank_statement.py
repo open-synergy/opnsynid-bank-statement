@@ -26,6 +26,26 @@ class AccountBankStatement(models.Model):
         string="Can Validate",
         compute="_compute_policy",
     )
+    confirm_ok = fields.Boolean(
+        string="Can Confirm",
+        compute="_compute_policy",
+    )
+    cancel_ok = fields.Boolean(
+        string="Can Cancel",
+        compute="_compute_policy",
+    )
+    restart_ok = fields.Boolean(
+        string="Can Restart",
+        compute="_compute_policy",
+    )
+    approve_ok = fields.Boolean(
+        string="Can Approve",
+        compute="_compute_policy",
+    )
+    reject_ok = fields.Boolean(
+        string="Can Reject",
+        compute="_compute_policy",
+    )
 
     @api.onchange(
         "journal_id",

@@ -7,6 +7,7 @@
         <field name="name">account.bank.statement.workflow.policy.form</field>
         <field name="model">account.bank.statement</field>
         <field name="inherit_id" ref="account.view_bank_statement_form" />
+        <field name="priority" eval="30" />
         <field name="arch" type="xml">
             <data>
                 <xpath
@@ -16,7 +17,7 @@
                     <attribute name="states" />
                     <attribute
                         name="attrs"
-                    >{'invisible':['|','|',('all_lines_reconciled','=',True),('line_ids','=',[]),('reconcile_ok', '=', False)]}</attribute>
+                    >{'invisible':[('reconcile_ok', '=', False)]}</attribute>
                 </xpath>
                 <xpath
                     expr="//button[@name='check_confirm_bank']"
@@ -25,7 +26,38 @@
                     <attribute name="states" />
                     <attribute
                         name="attrs"
-                    >{'invisible':['|','|',('all_lines_reconciled','=',False),('line_ids','=',[]),('validate_ok', '=', False)]}</attribute>
+                    >{'invisible':[('validate_ok', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_confirm']" position="attributes">
+                    <attribute
+                        name="attrs"
+                    >{'invisible':[('confirm_ok', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute
+                        name="attrs"
+                    >{'invisible':[('cancel_ok', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_restart']" position="attributes">
+                    <attribute
+                        name="attrs"
+                    >{'invisible':[('restart_ok', '=', False)]}</attribute>
+                </xpath>
+                <xpath
+                    expr="//button[@name='action_approve_approval']"
+                    position="attributes"
+                >
+                    <attribute
+                        name="attrs"
+                    >{'invisible':[('approve_ok', '=', False)]}</attribute>
+                </xpath>
+                <xpath
+                    expr="//button[@name='action_reject_approval']"
+                    position="attributes"
+                >
+                    <attribute
+                        name="attrs"
+                    >{'invisible':[('reject_ok', '=', False)]}</attribute>
                 </xpath>
                 <xpath expr="//notebook" position="inside">
                     <page
@@ -37,6 +69,11 @@
                             <field name="policy_template_id" />
                             <field name="reconcile_ok" />
                             <field name="validate_ok" />
+                            <field name="confirm_ok" />
+                            <field name="cancel_ok" />
+                            <field name="restart_ok" />
+                            <field name="reject_ok" />
+                            <field name="approve_ok" />
                         </group>
                     </page>
                 </xpath>

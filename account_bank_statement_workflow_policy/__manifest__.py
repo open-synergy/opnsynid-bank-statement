@@ -11,7 +11,7 @@
     "license": "LGPL-3",
     "installable": True,
     "depends": [
-        "account",
+        "account_bank_statement_multiple_approval",
         "ssi_policy_mixin",
     ],
     "data": [
