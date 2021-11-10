@@ -7,12 +7,16 @@
         <field name="name">account.bank.statement_approval form</field>
         <field name="model">account.bank.statement</field>
         <field name="inherit_id" ref="account.view_bank_statement_form" />
+        <field name="priority" eval="20" />
         <field name="arch" type="xml">
+            <xpath expr="//header/field[@name='state']" position="attributes">
+                <attribute name="statusbar_visible">open,approval,confirm</attribute>
+            </xpath>
             <xpath expr="//button[@name='check_confirm_bank']" position="before">
                 <button
                     name="action_confirm"
                     type="object"
-                    string="Request For Approval"
+                    string="Confirm"
                     class="oe_highlight"
                     attrs="{'invisible':['|','|',('all_lines_reconciled','=',False),('line_ids','=',[]),('state', '!=', 'open')]}"
                 />
@@ -31,13 +35,6 @@
                     string="Restart"
                     class="oe_highlight"
                     attrs="{'invisible':[('state','not in',['cancel','reject'])]}"
-                />
-
-                <button
-                    name="action_request_approval"
-                    string="Request Approval"
-                    attrs="{'invisible': ['|','|',('need_validation', '!=', True),('rejected','=',True),('state','not in',['approval'])]}"
-                    type="object"
                 />
             </xpath>
 
