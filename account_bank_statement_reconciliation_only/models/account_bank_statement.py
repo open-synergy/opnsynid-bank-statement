@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class AccountBankStatement(models.Model):
@@ -15,7 +15,7 @@ class AccountBankStatement(models.Model):
     )
     def _compute_reconciliation_only(self):
         for document in self:
-            self.reconciliation_only = self.journal_id.reconciliation_only
+            document.reconciliation_only = document.journal_id.reconciliation_only
 
     reconciliation_only = fields.Boolean(
         string="Reconciliation Only",
@@ -32,7 +32,7 @@ class AccountBankStatement(models.Model):
             "open": [
                 ("readonly", False),
             ],
-        }
+        },
     )
 
     @api.multi

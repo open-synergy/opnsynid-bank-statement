@@ -6,7 +6,7 @@
     "name": "Reconciliation Only Bank Statement & Cash Register",
     "version": "8.0.1.1.0",
     "category": "Accounting",
-    "website": "https://opensynergy-indonesia.com",
+    "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
     "installable": True,

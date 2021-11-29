@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class AccountBankStatement(models.Model):
@@ -19,8 +19,9 @@ class AccountBankStatement(models.Model):
             replenishment_amount = 0.0
             if document.journal_id:
                 journal = document.journal_id
-                replenishment_amount = journal.replenishment_limit - \
-                    document.balance_end_real
+                replenishment_amount = (
+                    journal.replenishment_limit - document.balance_end_real
+                )
             document.replenish_amount = replenishment_amount
 
     replenish_amount = fields.Float(
