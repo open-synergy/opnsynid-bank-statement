@@ -6,7 +6,7 @@
     "name": "Populate Bank Statement & Cash Register from Existing Entry",
     "version": "8.0.1.0.0",
     "category": "Accounting",
-    "website": "https://opensynergy-indonesia.com",
+    "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
     "license": "AGPL-3",
     "installable": True,

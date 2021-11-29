@@ -1,19 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <record id="account_bank_statement_view_form_1" model="ir.ui.view">
     <field name="name">account.bank.statement form - Reconciliation Only</field>
     <field name="model">account.bank.statement</field>
-    <field name="inherit_id" ref="account.view_bank_statement_form2"/>
+    <field name="inherit_id" ref="account.view_bank_statement_form2" />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='difference']" position="after">
-                <label for="replenish_amount" string="Replenishment Amount" class="oe_subtotal_footer_separator oe_difference" style="padding-right: 20px !important;"/>
-                <field name="replenish_amount" nolabel="1" class="oe_subtotal_footer_separator oe_difference" widget="monetary" options="{'currency_field': 'currency'}"/>
+                <label
+                            for="replenish_amount"
+                            string="Replenishment Amount"
+                            class="oe_subtotal_footer_separator oe_difference"
+                            style="padding-right: 20px !important;"
+                        />
+                <field
+                            name="replenish_amount"
+                            nolabel="1"
+                            class="oe_subtotal_footer_separator oe_difference"
+                            widget="monetary"
+                            options="{'currency_field': 'currency'}"
+                        />
             </xpath>
         </data>
     </field>

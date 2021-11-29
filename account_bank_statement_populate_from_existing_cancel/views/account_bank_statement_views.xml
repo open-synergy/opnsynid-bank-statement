@@ -1,23 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2020 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <record id="account_bank_statement_view_form" model="ir.ui.view">
     <field name="name">account.bank.statement form</field>
     <field name="model">account.bank.statement</field>
-    <field name="inherit_id" ref="account_cancel.bank_statement_cancel_form_inherit"/>
+    <field name="inherit_id" ref="account_cancel.bank_statement_cancel_form_inherit" />
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//field[@name='line_ids']/tree/button[@name='cancel']" position="before">
-                <field name="from_existing" invisible="1"/>
+            <xpath
+                        expr="//field[@name='line_ids']/tree/button[@name='cancel']"
+                        position="before"
+                    >
+                <field name="from_existing" invisible="1" />
             </xpath>
 
-            <xpath expr="//field[@name='line_ids']/tree/button[@name='cancel']" position="attributes">
-                <attribute name="attrs">{'invisible': ['|',('from_existing','=',True),'&amp;',('journal_entry_id', '=', False),('from_existing','=',False)]}</attribute>
+            <xpath
+                        expr="//field[@name='line_ids']/tree/button[@name='cancel']"
+                        position="attributes"
+                    >
+                <attribute
+                            name="attrs"
+                        >{'invisible': ['|',('from_existing','=',True),'&amp;',('journal_entry_id', '=', False),('from_existing','=',False)]}</attribute>
             </xpath>
         </data>
     </field>
@@ -26,14 +33,22 @@
 <record id="account_bank_statement_view_form_1" model="ir.ui.view">
     <field name="name">account.bank.statement form</field>
     <field name="model">account.bank.statement</field>
-    <field name="inherit_id" ref="account_cancel.bank_statement_cancel_form_inherit2"/>
+    <field name="inherit_id" ref="account_cancel.bank_statement_cancel_form_inherit2" />
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//field[@name='line_ids']/tree/button[@name='cancel']" position="before">
-                <field name="from_existing" invisible="1"/>
+            <xpath
+                        expr="//field[@name='line_ids']/tree/button[@name='cancel']"
+                        position="before"
+                    >
+                <field name="from_existing" invisible="1" />
             </xpath>
-            <xpath expr="//field[@name='line_ids']/tree/button[@name='cancel']" position="attributes">
-                <attribute name="attrs">{'invisible': ['|',('from_existing','=',True),'&amp;',('journal_entry_id', '=', False),('from_existing','=',False)]}</attribute>
+            <xpath
+                        expr="//field[@name='line_ids']/tree/button[@name='cancel']"
+                        position="attributes"
+                    >
+                <attribute
+                            name="attrs"
+                        >{'invisible': ['|',('from_existing','=',True),'&amp;',('journal_entry_id', '=', False),('from_existing','=',False)]}</attribute>
             </xpath>
         </data>
     </field>
@@ -42,7 +57,7 @@
 <record id="account_bank_statement_view_form_2" model="ir.ui.view">
     <field name="name">account.bank.statement form</field>
     <field name="model">account.bank.statement</field>
-    <field name="inherit_id" ref="account.view_bank_statement_form"/>
+    <field name="inherit_id" ref="account.view_bank_statement_form" />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//header/button[@name='button_cancel']" position="attributes">
@@ -55,7 +70,7 @@
 <record id="account_bank_statement_view_form_3" model="ir.ui.view">
     <field name="name">account.bank.statement form</field>
     <field name="model">account.bank.statement</field>
-    <field name="inherit_id" ref="account.view_bank_statement_form2"/>
+    <field name="inherit_id" ref="account.view_bank_statement_form2" />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//header/button[@name='button_cancel']" position="attributes">
