@@ -22,10 +22,6 @@ class AccountBankStatement(models.Model):
         string="Can Reconcile",
         compute="_compute_policy",
     )
-    validate_ok = fields.Boolean(
-        string="Can Validate",
-        compute="_compute_policy",
-    )
     confirm_ok = fields.Boolean(
         string="Can Confirm",
         compute="_compute_policy",
