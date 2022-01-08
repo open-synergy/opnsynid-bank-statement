@@ -3,117 +3,90 @@
      Copyright 2021 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record id="account_bank_statement_approval_view_form" model="ir.ui.view">
-        <field name="name">account.bank.statement_approval form</field>
-        <field name="model">account.bank.statement</field>
-        <field name="inherit_id" ref="account.view_bank_statement_form" />
-        <field name="priority" eval="20" />
-        <field name="arch" type="xml">
-            <xpath expr="//header/field[@name='state']" position="attributes">
-                <attribute name="statusbar_visible">open,approval,confirm</attribute>
-            </xpath>
-            <xpath expr="//button[@name='check_confirm_bank']" position="before">
-                <button
+<record id="account_bank_statement_view_form" model="ir.ui.view">
+    <field name="name">account.bank.statement form</field>
+    <field name="model">account.bank.statement</field>
+    <field name="inherit_id" ref="account.view_bank_statement_form" />
+    <field name="priority" eval="20" />
+    <field name="arch" type="xml">
+        <xpath expr="//header/field[@name='state']" position="attributes">
+            <attribute name="statusbar_visible">open,approval,confirm</attribute>
+        </xpath>
+        <xpath expr="//button[@name='check_confirm_bank']" position="before">
+            <button
                     name="action_confirm"
                     type="object"
                     string="Confirm"
                     class="oe_highlight"
                     attrs="{'invisible':['|','|',('all_lines_reconciled','=',False),('line_ids','=',[]),('state', '!=', 'open')]}"
                 />
-
-                <button
+            <button
+                    name="action_approve_approval"
+                    string="Approve"
+                    states="approval"
+                    type="object"
+                    class="oe_highlight"
+                />
+            <button
+                    name="action_reject_approval"
+                    string="Reject"
+                    type="object"
+                    states="approval"
+                />
+            <button
+                    name="action_request_approval"
+                    string="Request Approval"
+                    attrs="{'invisible': ['|',('state', '!=', 'approval'),'&amp;',('state', '=', 'approval'),('approval_template_id','!=',False)]}"
+                    type="object"
+                />
+            <button
                     name="action_cancel"
                     type="object"
                     string="Cancel"
                     class="oe_highlight"
                     attrs="{'invisible':[('state','in',['cancel','reject'])]}"
                 />
-
-                <button
+            <button
                     name="action_restart"
                     type="object"
                     string="Restart"
                     class="oe_highlight"
                     attrs="{'invisible':[('state','not in',['cancel','reject'])]}"
                 />
-            </xpath>
+        </xpath>
 
-            <xpath expr="//button[@name='check_confirm_bank']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
+        <xpath expr="//button[@name='check_confirm_bank']" position="attributes">
+            <attribute name="invisible">1</attribute>
+            <attribute name="state" />
+            <attribute name="attrs" />
+        </xpath>
 
-            <xpath expr="//button[@name='button_draft']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
+        <xpath expr="//button[@name='button_draft']" position="attributes">
+            <attribute name="invisible">1</attribute>
+            <attribute name="state" />
+            <attribute name="attrs" />
+        </xpath>
 
-            <xpath expr="//header" position="after">
-                <field name="need_validation" invisible="1" />
-                <field name="approved" invisible="1" />
-                <field name="rejected" invisible="1" />
-                <div
-                    role="alert"
-                    class="alert alert-warning"
-                    attrs="{'invisible': ['|', '|', '|',
-                     ('approved', '=', True), ('state', 'not in', ['approval']),
-                     ('rejected', '=', True), ('approval_ids', '=', [])]}"
-                    style="margin-bottom:0px;"
-                >
-                    <p><i class="fa fa-info-circle" />This Record needs to be
-                        approved.
-                        <button
-                            name="action_approve_approval"
-                            string="Approve"
-                            attrs="{'invisible': [('approval_ids', '=', [])]}"
-                            type="object"
-                            class="oe_inline oe_button btn-success"
-                            icon="fa-check"
-                        />
-                        <button
-                            name="action_reject_approval"
-                            string="Reject"
-                            type="object"
-                            class="btn-icon btn-danger"
-                            icon="fa-stop"
-                        />
-                    </p>
-                </div>
-                <div
-                    role="alert"
-                    class="alert alert-success"
-                    attrs="{'invisible': ['|', '|', ('approved', '!=', True), ('state', 'not in', ['approval']), ('approval_ids', '=', [])]}"
-                    style="margin-bottom:0px;"
-                >
-                    <p><i class="fa fa-thumbs-up" /> Operation has been <b
-                        >approved</b>!</p>
-                </div>
-                <div
-                    role="alert"
-                    class="alert alert-danger"
-                    attrs="{'invisible': ['|', '|', ('rejected', '!=', True), ('state', 'not in', ['approval']), ('approval_ids', '=', [])]}"
-                    style="margin-bottom:0px;"
-                >
-                    <p><i class="fa fa-thumbs-down" /> Operation has been <b
-                        >rejected</b>.</p>
-                </div>
-            </xpath>
+        <xpath expr="//header" position="after">
+            <field name="need_validation" invisible="1" />
+            <field name="approved" invisible="1" />
+            <field name="rejected" invisible="1" />
+        </xpath>
 
-            <xpath expr="//notebook" position="inside">
-                <page string="Approvals" name="tier_validation">
-                    <group>
-                        <field name="approval_template_id" />
-                        <field
-                            name="active_approver_partner_ids"
-                            widget="many2many_tags"
-                        />
-                    </group>
-                    <field
+        <xpath expr="//notebook" position="inside">
+            <page string="Approvals" name="tier_validation">
+                <group>
+                    <field name="approval_template_id" />
+                    <field name="active_approver_partner_ids" widget="many2many_tags" />
+                </group>
+                <field
                         name="approval_ids"
                         attrs="{'invisible':[('approval_ids', '=', [])]}"
                         nolabel="1"
                     />
-                </page>
-            </xpath>
-        </field>
-    </record>
+            </page>
+        </xpath>
+    </field>
+</record>
 
 </odoo>

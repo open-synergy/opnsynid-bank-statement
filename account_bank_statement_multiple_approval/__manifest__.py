@@ -3,7 +3,7 @@
 
 {
     "name": "Bank Statement Multiple Approval",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.1.0",
     "license": "AGPL-3",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
@@ -13,6 +13,7 @@
         "ssi_multiple_approval_mixin",
     ],
     "data": [
+        "data/approval_template_data.xml",
         "views/account_bank_statement_views.xml",
     ],
     "images": [

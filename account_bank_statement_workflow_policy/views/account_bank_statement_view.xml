@@ -24,9 +24,7 @@
                     position="attributes"
                 >
                     <attribute name="states" />
-                    <attribute
-                        name="attrs"
-                    >{'invisible':[('validate_ok', '=', False)]}</attribute>
+                    <attribute name="attrs" />
                 </xpath>
                 <xpath expr="//button[@name='action_confirm']" position="attributes">
                     <attribute
@@ -67,8 +65,12 @@
                     >
                         <group name="group_1" colspan="4" col="2">
                             <field name="policy_template_id" />
+                            <button
+                                name="action_reload_policy_template"
+                                type="object"
+                                string="Reload Template Policy"
+                            />
                             <field name="reconcile_ok" />
-                            <field name="validate_ok" />
                             <field name="confirm_ok" />
                             <field name="cancel_ok" />
                             <field name="restart_ok" />
